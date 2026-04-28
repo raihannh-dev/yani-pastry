@@ -1,110 +1,77 @@
 <script setup lang="ts">
-import { Phone } from "lucide-vue-next";
-import { settings } from "../../config/settings";
+import { ArrowRight } from "lucide-vue-next";
 </script>
 
 <template>
   <section
-    class="relative bg-gradient-to-br from-primary-light/20 via-primary-light/5 to-white overflow-hidden min-h-[600px] md:min-h-[700px] flex items-center"
+    class="relative bg-neutral-950 overflow-hidden min-h-[80vh] md:min-h-[90vh] flex items-center font-sans"
   >
-    <div class="container mx-auto px-4 py-16 md:py-24 lg:py-32">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <!-- Soft spotlight lighting effects -->
+    <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+      <div class="w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-neutral-800/40 rounded-full blur-[100px] md:blur-[140px] mix-blend-screen"></div>
+    </div>
+
+    <!-- Additional subtle warm spotlight -->
+    <div class="absolute top-0 right-0 w-full max-w-[800px] h-[600px] bg-emerald-900/20 rounded-[100%] blur-[120px] mix-blend-screen pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
+
+    <div class="container relative z-10 mx-auto px-6 py-20 lg:py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         <!-- Text Content -->
-        <div class="text-center lg:text-left space-y-6 lg:space-y-8">
-          <h1
-            class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-800 leading-tight"
-          >
-            Selamat Datang di
-            <span
-              class="block text-primary mt-2"
+        <div class="text-center lg:text-left space-y-8 order-2 lg:order-1">
+          <div class="space-y-4">
+            <span class="inline-block text-emerald-500/90 tracking-[0.25em] uppercase text-xs font-semibold pb-2 border-b border-emerald-500/30">Premium Quality</span>
+            <h1
+              class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight leading-[1.1] font-light"
+              style="font-family: 'Playfair Display', 'Cormorant Garamond', serif;"
             >
-              {{ settings.shop.name }}
-            </span>
-          </h1>
-          <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 font-medium">
-            {{ settings.shop.tagline }}
-          </p>
-          <p class="text-base sm:text-lg text-gray-700 max-w-xl mx-auto lg:mx-0">
-            Nikmati berbagai macam kue kering premium dengan kualitas terbaik
-            dan cita rasa yang lezat. Sempurna untuk acara spesial atau sekadar
-            cemilan keluarga.
+              Indulgence in <br />
+              <span class="italic text-neutral-300">Every Bite</span>
+            </h1>
+          </div>
+          
+          <p class="text-lg sm:text-xl text-neutral-400 font-light max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            Experience the pinnacle of culinary artistry. Our handcrafted cookies are baked to perfection, offering a symphony of rich textures and exclusive flavors.
           </p>
 
-          <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+          <!-- CTA Button -->
+          <div class="pt-8 flex justify-center lg:justify-start">
             <a
               href="#products"
-              class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 text-lg"
+              class="group inline-flex items-center gap-4 bg-white hover:bg-neutral-200 text-neutral-950 font-medium py-4 px-10 transition-all duration-500 uppercase tracking-[0.15em] text-sm hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]"
             >
-              Lihat Menu
-            </a>
-            <a
-              :href="`tel:${settings.shop.phone}`"
-              class="bg-white border-2 border-primary text-primary hover:bg-primary-light/10 font-bold py-4 px-10 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 text-lg"
-            >
-              <Phone :size="22" />
-              <span>{{ settings.shop.phone }}</span>
+              <span>Shop Collection</span>
+              <ArrowRight class="w-4 h-4 group-hover:translate-x-2 transition-transform duration-500" />
             </a>
           </div>
         </div>
 
         <!-- Hero Image -->
-        <div class="relative order-first lg:order-last">
-          <div class="relative z-10 transform hover:scale-105 transition-transform duration-500">
-            <img
-              src="/images/hero-cake.png"
-              alt="Yani Pastry Featured Cake"
-              class="w-full h-auto rounded-3xl shadow-2xl"
-            />
+        <div class="relative order-1 lg:order-2 flex justify-center">
+          <div class="relative z-10 w-full max-w-md lg:max-w-lg aspect-[4/5] bg-neutral-900 p-2 shadow-2xl">
+            <div class="w-full h-full relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent z-10 pointer-events-none"></div>
+              <img
+                src="/images/premium-cookies-hero.png"
+                alt="Luxurious Premium Cookies"
+                class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[10s] ease-out"
+              />
+            </div>
+            <!-- Corner Accents -->
+            <div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-emerald-500/50"></div>
+            <div class="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-emerald-500/50"></div>
+            <div class="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-emerald-500/50"></div>
+            <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-emerald-500/50"></div>
           </div>
-
-          <!-- Decorative Elements -->
-          <div
-            class="absolute -top-4 -right-4 w-64 h-64 lg:w-72 lg:h-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
-          ></div>
-          <div
-            class="absolute -bottom-8 left-10 lg:left-20 w-64 h-64 lg:w-72 lg:h-72 bg-accent/30 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"
-          ></div>
+          
+          <!-- Decorative abstract frame -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-white/5 z-0 hidden lg:block pointer-events-none"></div>
         </div>
       </div>
-    </div>
-
-    <!-- Wave Divider -->
-    <div class="absolute bottom-0 left-0 right-0">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-        class="w-full h-auto"
-      >
-        <path
-          fill="#ffffff"
-          fill-opacity="1"
-          d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-        ></path>
-      </svg>
     </div>
   </section>
 </template>
 
 <style scoped>
-@keyframes blob {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
+/* Optional: Import Playfair Display if not globally available, to ensure the elegant serif look works */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
 </style>

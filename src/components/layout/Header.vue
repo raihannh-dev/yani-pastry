@@ -30,68 +30,66 @@ const openUserProfile = () => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
-    <div class="container mx-auto px-4">
-      <nav class="flex items-center justify-between h-20">
+  <header class="sticky top-0 z-50 bg-neutral-950/90 backdrop-blur-md border-b border-white/10 transition-colors duration-300 font-sans">
+    <div class="container mx-auto px-6">
+      <nav class="flex items-center justify-between h-24">
         <!-- Logo -->
         <RouterLink
           to="/"
-          class="text-2xl font-bold text-primary"
+          class="text-2xl lg:text-3xl font-light text-white tracking-widest uppercase"
+          style="font-family: 'Playfair Display', 'Cormorant Garamond', serif;"
           @click="closeMenu"
         >
-          🧁 {{ settings.shop.name }}
+          {{ settings.shop.name }}
         </RouterLink>
 
         <!-- Desktop Menu -->
-        <ul class="hidden md:flex items-center gap-8">
+        <ul class="hidden md:flex items-center gap-10">
           <li>
             <RouterLink
               to="/"
-              class="text-gray-700 hover:text-primary font-medium transition-colors"
+              class="text-neutral-300 hover:text-emerald-400 text-xs font-medium tracking-[0.2em] uppercase transition-colors"
               >Home</RouterLink
             >
           </li>
           <li>
             <RouterLink
               to="/menu"
-              class="text-gray-700 hover:text-primary font-medium transition-colors"
+              class="text-neutral-300 hover:text-emerald-400 text-xs font-medium tracking-[0.2em] uppercase transition-colors"
               >Menu</RouterLink
             >
           </li>
           <li>
             <RouterLink
               to="/contact"
-              class="text-gray-700 hover:text-primary font-medium transition-colors"
+              class="text-neutral-300 hover:text-emerald-400 text-xs font-medium tracking-[0.2em] uppercase transition-colors"
               >Contact</RouterLink
             >
           </li>
           <li>
             <RouterLink
               to="/about"
-              class="text-gray-700 hover:text-primary font-medium transition-colors"
+              class="text-neutral-300 hover:text-emerald-400 text-xs font-medium tracking-[0.2em] uppercase transition-colors"
               >About</RouterLink
             >
           </li>
         </ul>
 
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-4">
           <!-- User Profile Button -->
           <button
             @click="openUserProfile"
             :class="[
-              'relative p-3 rounded-full transition-colors',
+              'relative p-2 rounded-full transition-colors',
               userStore.hasProfile
-                ? 'bg-primary-light/10 hover:bg-primary-light/20'
-                : 'bg-gray-100 hover:bg-gray-200',
+                ? 'text-emerald-400 hover:bg-emerald-400/10'
+                : 'text-neutral-400 hover:text-white hover:bg-white/10',
             ]"
           >
-            <User
-              :size="24"
-              :class="userStore.hasProfile ? 'text-primary' : 'text-gray-600'"
-            />
+            <User :size="22" stroke-width="1.5" />
             <span
               v-if="!userStore.hasProfile"
-              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+              class="absolute top-0 right-0 bg-emerald-500 text-neutral-950 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-neutral-950"
             >
               !
             </span>
@@ -100,71 +98,73 @@ const openUserProfile = () => {
           <!-- Cart Button -->
           <button
             @click="openCart"
-            class="relative p-3 bg-primary-light/10 hover:bg-primary-light/20 rounded-full transition-colors"
+            class="relative p-2 text-neutral-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
           >
-            <ShoppingCart :size="24" class="text-primary" />
+            <ShoppingCart :size="22" stroke-width="1.5" />
             <span
               v-if="cart.itemCount > 0"
-              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-bounce"
+              class="absolute top-0 right-0 bg-emerald-500 text-neutral-950 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center animate-bounce border border-neutral-950"
             >
               {{ cart.itemCount }}
             </span>
           </button>
+          
+          <!-- Mobile Menu Button -->
+          <button @click="toggleMenu" class="md:hidden p-2 text-neutral-400 hover:text-white">
+            <Menu v-if="!isMenuOpen" :size="26" stroke-width="1.5" />
+            <X v-else :size="26" stroke-width="1.5" />
+          </button>
         </div>
-
-        <!-- Mobile Menu Button -->
-        <button @click="toggleMenu" class="md:hidden p-2">
-          <Menu v-if="!isMenuOpen" :size="28" class="text-gray-700" />
-          <X v-else :size="28" class="text-gray-700" />
-        </button>
       </nav>
 
       <!-- Mobile Menu -->
       <transition
-        enter-active-class="transition duration-200 ease-out"
+        enter-active-class="transition duration-300 ease-out"
         enter-from-class="opacity-0 -translate-y-4"
         enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="transition duration-150 ease-in"
+        leave-active-class="transition duration-200 ease-in"
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-4"
       >
-        <ul
+        <div
           v-if="isMenuOpen"
-          class="md:hidden pb-4 border-t border-gray-100 mt-2 pt-4 space-y-3"
+          class="md:hidden pb-6 border-t border-white/10 bg-neutral-950 absolute left-0 w-full px-6 shadow-2xl"
         >
-          <li>
-            <RouterLink
-              to="/"
-              @click="closeMenu"
-              class="block text-gray-700 hover:text-primary font-medium py-2"
-              >Home</RouterLink
-            >
-          </li>
-          <li>
-            <RouterLink
-              to="/menu"
-              @click="closeMenu"
-              class="block text-gray-700 hover:text-primary font-medium py-2"
-              >Menu</RouterLink
-            >
-          </li>
-          <li>
-            <RouterLink
-              to="/contact"
-              @click="closeMenu"
-              class="block text-gray-700 hover:text-primary font-medium py-2"
-              >Contact</RouterLink
-            >
-          </li>
-          <li>
-            <RouterLink
-              to="/about"
-              @click="closeMenu"
-              class="block text-gray-700 hover:text-primary font-medium py-2"
-              >About</RouterLink
-            >
-          </li>
-        </ul>
+          <ul class="mt-4 space-y-4">
+            <li>
+              <RouterLink
+                to="/"
+                @click="closeMenu"
+                class="block text-neutral-300 hover:text-emerald-400 text-sm font-medium tracking-widest uppercase py-2"
+                >Home</RouterLink
+              >
+            </li>
+            <li>
+              <RouterLink
+                to="/menu"
+                @click="closeMenu"
+                class="block text-neutral-300 hover:text-emerald-400 text-sm font-medium tracking-widest uppercase py-2"
+                >Menu</RouterLink
+              >
+            </li>
+            <li>
+              <RouterLink
+                to="/contact"
+                @click="closeMenu"
+                class="block text-neutral-300 hover:text-emerald-400 text-sm font-medium tracking-widest uppercase py-2"
+                >Contact</RouterLink
+              >
+            </li>
+            <li>
+              <RouterLink
+                to="/about"
+                @click="closeMenu"
+                class="block text-neutral-300 hover:text-emerald-400 text-sm font-medium tracking-widest uppercase py-2"
+                >About</RouterLink
+              >
+            </li>
+          </ul>
+        </div>
       </transition>
     </div>
   </header>
