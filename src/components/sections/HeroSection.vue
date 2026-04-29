@@ -24,13 +24,13 @@ import { ArrowRight } from "lucide-vue-next";
               class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight leading-[1.1] font-light"
               style="font-family: 'Playfair Display', 'Cormorant Garamond', serif;"
             >
-              Indulgence in <br />
-              <span class="italic text-neutral-300">Every Bite</span>
+              Kemewahan  <br />
+              <span class="italic text-neutral-300">Rasa Tak Terlupakan</span>
             </h1>
           </div>
           
           <p class="text-lg sm:text-xl text-neutral-400 font-light max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            Experience the pinnacle of culinary artistry. Our handcrafted cookies are baked to perfection, offering a symphony of rich textures and exclusive flavors.
+            Hadirkan kemewahan di meja tamu Anda. Temukan simfoni tekstur dari lembutnya Putri Salju, segarnya Fruit Cookies, hingga premiumnya Choco Stick kami. Dibuat dengan bahan pilihan untuk menghasilkan cita rasa eksklusif yang memanjakan lidah.
           </p>
 
           <!-- CTA Button -->
@@ -39,7 +39,7 @@ import { ArrowRight } from "lucide-vue-next";
               href="#products"
               class="group inline-flex items-center gap-4 bg-white hover:bg-neutral-200 text-neutral-950 font-medium py-4 px-10 transition-all duration-500 uppercase tracking-[0.15em] text-sm hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]"
             >
-              <span>Shop Collection</span>
+              <span>Pesan Sekarang</span>
               <ArrowRight class="w-4 h-4 group-hover:translate-x-2 transition-transform duration-500" />
             </a>
           </div>
