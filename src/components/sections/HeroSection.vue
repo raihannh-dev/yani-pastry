@@ -51,7 +51,7 @@ import { ArrowRight } from "lucide-vue-next";
             <div class="w-full h-full relative overflow-hidden">
               <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent z-10 pointer-events-none"></div>
               <img
-                src="/images/premium-cookies-hero.png"
+                src="/images/hero-cookies.png"
                 alt="Luxurious Premium Cookies"
                 class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[10s] ease-out"
               />
